@@ -13,7 +13,7 @@ public class ChooseCheckAnswer : MonoBehaviour
     private string _answer;
     private List<string> _answers = new List<string>();
     private readonly System.Random _random = new System.Random();
-    
+
     public void Choose(List<string> data)
     {
         do
@@ -37,12 +37,21 @@ public class ChooseCheckAnswer : MonoBehaviour
             }
         }
     }
-    public void StopCardCheck()
+    public void GameFinished()
     {
-        canButtonPress = false;
-    } 
+        StopCardCheck();
+        AnswersClear();
+    }
     public void StartCardCheck()
     {
         canButtonPress = true;
-    } 
+    }
+    private void StopCardCheck()
+    {
+        canButtonPress = false;
+    }
+    private void AnswersClear()
+    {
+        _answers.Clear();
+    }
 }

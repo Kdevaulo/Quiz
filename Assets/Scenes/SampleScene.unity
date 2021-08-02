@@ -712,7 +712,7 @@ MonoBehaviour:
         m_CallState: 1
       - m_Target: {fileID: 1569748742}
         m_TargetAssemblyTypeName: ChooseCheckAnswer, Assembly-CSharp
-        m_MethodName: StopCardCheck
+        m_MethodName: GameFinished
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
