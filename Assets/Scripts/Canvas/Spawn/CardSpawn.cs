@@ -1,15 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System;
 
-[RequireComponent(typeof(CardDataChoose), typeof(ChooseCheckAnswer), typeof(CardBounce))]
+[RequireComponent(typeof(CardDataChoose), typeof(ChooseCheckAnswer))]
 public class CardSpawn : MonoBehaviour
 {
     [SerializeField] private GameObject _card;
     [SerializeField] private Vector2 _localScale;
 
     private bool _isFirstTime = true;
-    private CardBounce _cardBounce;
     private ChooseCheckAnswer _answerChecker;
     private readonly System.Random _random = new System.Random();
 
@@ -59,16 +59,23 @@ public class CardSpawn : MonoBehaviour
 
             if (_isFirstTime)
             {
-                _cardBounce.Appear(data, _localScale.x);
+                Scale scaler;
+                if(!card.TryGetComponent(out scaler))
+                {
+                    throw new Exception("Card Prefab does not have Scale component");
+                }
+                scaler.ScaleUp(card.transform.localScale.x);
             }
         }
         _isFirstTime = false;
-
         _answerChecker.Choose(dataNames);
+    }
+    public void SetFirstTimeFlag()
+    {
+        _isFirstTime = true;
     }
     private void OnEnable()
     {
         _answerChecker = GetComponent<ChooseCheckAnswer>();
-        _cardBounce = GetComponent<CardBounce>();
     }
 }

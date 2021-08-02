@@ -7,6 +7,7 @@ public class ChooseCheckAnswer : MonoBehaviour
 {
     public UnityEvent<string> AnswerChosen;
     public UnityEvent<GameObject> GoodAnswer;
+    public UnityEvent<GameObject> WrongAnswer;
 
     private bool canButtonPress = true;
     private string _answer;
@@ -32,7 +33,7 @@ public class ChooseCheckAnswer : MonoBehaviour
             }
             else
             {
-                //движение easeInBounce объекта внутри карточки
+                WrongAnswer.Invoke(card);
             }
         }
     }
