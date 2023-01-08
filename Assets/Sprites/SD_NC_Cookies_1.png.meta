@@ -27,7 +27,7 @@ TextureImporter:
       213: 3547489320769246608
     second: SD_NC_Cookies_1_7
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -56,9 +56,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -86,6 +86,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -123,6 +124,30 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -130,12 +155,12 @@ TextureImporter:
       name: SD_NC_Cookies_1_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 623
-        width: 167
-        height: 396
+        x: 4
+        y: 620
+        width: 168
+        height: 399
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -151,12 +176,12 @@ TextureImporter:
       name: SD_NC_Cookies_1_1
       rect:
         serializedVersion: 2
-        x: 178
+        x: 177
         y: 624
-        width: 277
-        height: 395
+        width: 278
+        height: 396
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -173,11 +198,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 460
-        y: 623
+        y: 620
         width: 271
-        height: 396
+        height: 400
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -194,13 +219,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 746
-        y: 623
+        y: 620
         width: 273
-        height: 395
+        height: 400
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -99.5, y: 200}
+        - {x: -136.5, y: 192}
+        - {x: -136.5, y: -200}
+        - {x: 136.5, y: -200}
+        - {x: 136.5, y: 200}
       physicsShape: []
       tessellationDetail: 0
       bones: []
@@ -219,7 +249,7 @@ TextureImporter:
         width: 303
         height: 395
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -235,12 +265,12 @@ TextureImporter:
       name: SD_NC_Cookies_1_5
       rect:
         serializedVersion: 2
-        x: 313
-        y: 223
-        width: 296
-        height: 396
+        x: 312
+        y: 220
+        width: 298
+        height: 399
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -257,11 +287,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 623
-        y: 346
-        width: 395
-        height: 273
+        y: 345
+        width: 396
+        height: 274
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -279,10 +309,10 @@ TextureImporter:
         serializedVersion: 2
         x: 623
         y: 5
-        width: 394
+        width: 396
         height: 269
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
