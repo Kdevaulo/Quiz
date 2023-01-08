@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ddc00993d07f314b8912152de499307, type: 3}
+  m_Name: CardData
+  m_EditorClassIdentifier: 
+  _cardDataCollections:
+  - _collectionName: Letters
+    _cardDataCollection:
+    - _identifier: A
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: 4963718625464178563, guid: f8febaa482293fe46b135774b4bc33fa, type: 3}
+    - _identifier: B
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: 7783457984840754399, guid: f8febaa482293fe46b135774b4bc33fa, type: 3}
+    - _identifier: C
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: 3234300448368640894, guid: f8febaa482293fe46b135774b4bc33fa, type: 3}
+    - _identifier: D
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: 7911670913450602933, guid: f8febaa482293fe46b135774b4bc33fa, type: 3}
+    - _identifier: E
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: 4652326554734856401, guid: f8febaa482293fe46b135774b4bc33fa, type: 3}
+    - _identifier: F
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: -6426668015567183463, guid: f8febaa482293fe46b135774b4bc33fa, type: 3}
+    - _identifier: G
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: 216406037199867053, guid: f8febaa482293fe46b135774b4bc33fa, type: 3}
+    - _identifier: H
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: -8235857483100294123, guid: f8febaa482293fe46b135774b4bc33fa, type: 3}
+    - _identifier: I
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: -3541686595128163680, guid: f8febaa482293fe46b135774b4bc33fa, type: 3}
+    - _identifier: J
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: -2756605603065543306, guid: f8febaa482293fe46b135774b4bc33fa, type: 3}
+    - _identifier: K
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: -1127063002332224934, guid: f8febaa482293fe46b135774b4bc33fa, type: 3}
+    - _identifier: L
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: -5901097786099144959, guid: f8febaa482293fe46b135774b4bc33fa, type: 3}
+    - _identifier: M
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: 3295844289267200183, guid: f8febaa482293fe46b135774b4bc33fa, type: 3}
+    - _identifier: N
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: 7112752472869403061, guid: 89ce8d35fb762fd41824cdd527a6021c, type: 3}
+    - _identifier: O
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: 5433449995169814141, guid: 89ce8d35fb762fd41824cdd527a6021c, type: 3}
+    - _identifier: P
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: -4252152113809563852, guid: 89ce8d35fb762fd41824cdd527a6021c, type: 3}
+    - _identifier: Q
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: -4447791616812998045, guid: 89ce8d35fb762fd41824cdd527a6021c, type: 3}
+    - _identifier: R
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: -6342808464625005154, guid: 89ce8d35fb762fd41824cdd527a6021c, type: 3}
+    - _identifier: S
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: 8083504644574312765, guid: 89ce8d35fb762fd41824cdd527a6021c, type: 3}
+    - _identifier: T
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: -4461999128152558772, guid: 89ce8d35fb762fd41824cdd527a6021c, type: 3}
+    - _identifier: U
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: 3270655726746431581, guid: 89ce8d35fb762fd41824cdd527a6021c, type: 3}
+    - _identifier: V
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: -2983290644488427326, guid: 89ce8d35fb762fd41824cdd527a6021c, type: 3}
+    - _identifier: W
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: -9165466868132007793, guid: 89ce8d35fb762fd41824cdd527a6021c, type: 3}
+    - _identifier: X
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: 4461586319009975920, guid: 89ce8d35fb762fd41824cdd527a6021c, type: 3}
+    - _identifier: Y
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: -5001085640463096552, guid: f93fdec59866cd0429104eb541561df2, type: 3}
+    - _identifier: Z
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: 3539555106843919260, guid: f93fdec59866cd0429104eb541561df2, type: 3}
+  - _collectionName: Numbers
+    _cardDataCollection:
+    - _identifier: 1
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: 1422184923334757970, guid: 550113674f6f38648a84a4864fefbab6, type: 3}
+    - _identifier: 2
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: 1808195818850983521, guid: 550113674f6f38648a84a4864fefbab6, type: 3}
+    - _identifier: 3
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: -7900951133411543555, guid: 550113674f6f38648a84a4864fefbab6, type: 3}
+    - _identifier: 4
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: 2267071060405275165, guid: 550113674f6f38648a84a4864fefbab6, type: 3}
+    - _identifier: 5
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: -7398325283844340781, guid: 550113674f6f38648a84a4864fefbab6, type: 3}
+    - _identifier: 6
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: -7015292045520539579, guid: 550113674f6f38648a84a4864fefbab6, type: 3}
+    - _identifier: 7
+      _rotation: {x: 0, y: 0, z: -90}
+      _sprite: {fileID: -675344402919758444, guid: 550113674f6f38648a84a4864fefbab6, type: 3}
+    - _identifier: 8
+      _rotation: {x: 0, y: 0, z: -90}
+      _sprite: {fileID: 3547489320769246608, guid: 550113674f6f38648a84a4864fefbab6, type: 3}
+    - _identifier: 9
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: -1155199509967091035, guid: 5a66fbb2ef19226419535c7e600a044a, type: 3}
+    - _identifier: 10
+      _rotation: {x: 0, y: 0, z: 0}
+      _sprite: {fileID: 4142021021139464533, guid: 7a5e1e4b7cab54549b423888fdca5086, type: 3}
