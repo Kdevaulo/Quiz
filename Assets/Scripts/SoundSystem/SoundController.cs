@@ -32,8 +32,6 @@ namespace Quiz.SoundSystem
 
             _correctItemClicked.AddListener(TryPlayCorrectSound);
             _wrongItemClicked.AddListener(TryPlayWrongSound);
-
-            TryPlayBackgroundSound();
         }
 
         void IDisposable.Dispose()
@@ -69,16 +67,6 @@ namespace Quiz.SoundSystem
             PlayCorrectSoundAsync().Forget();
         }
 
-        private void TryPlayBackgroundSound()
-        {
-            if (_backgroundIsPlaying)
-            {
-                return;
-            }
-
-            PlayBackgroundSoundAsync().Forget();
-        }
-
         private async UniTask PlayWrongSoundAsync()
         {
             _wrongIsPlaying = true;
@@ -95,18 +83,6 @@ namespace Quiz.SoundSystem
             await _soundPlayer.PlayCorrectSoundAsync(_cts.Token);
 
             _correctIsPlaying = false;
-        }
-
-        private async UniTask PlayBackgroundSoundAsync()
-        {
-            _backgroundIsPlaying = true;
-
-            while (!_cts.IsCancellationRequested)
-            {
-                await _soundPlayer.PlayBackgroundSoundAsync(_cts.Token);
-            }
-
-            _backgroundIsPlaying = false;
         }
     }
 }

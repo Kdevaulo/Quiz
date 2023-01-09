@@ -201,7 +201,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!224 &84118115
 RectTransform:
@@ -676,7 +676,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wrongSound: {fileID: 2114901647}
   _correctSound: {fileID: 1796207173}
-  _backgroundSound: {fileID: 132995346}
 --- !u!4 &786813215
 Transform:
   m_ObjectHideFlags: 0
@@ -773,7 +772,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &801738473
 RectTransform:
@@ -808,9 +807,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8027c3dbf146678aa64fffd0809801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RestartButtonClicked:
-    m_PersistentCalls:
-      m_Calls: []
   _buttonImage: {fileID: 1668427443}
   _blackoutImage: {fileID: 651695468}
   _restartButton: {fileID: 353444344}

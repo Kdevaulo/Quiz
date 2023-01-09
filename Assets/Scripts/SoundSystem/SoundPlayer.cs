@@ -13,8 +13,6 @@ namespace Quiz.SoundSystem
 
         [SerializeField] private AudioSource _correctSound;
 
-        [SerializeField] private AudioSource _backgroundSound;
-
         public async UniTask PlayWrongSoundAsync(CancellationToken token)
         {
             await PlaySoundAsync(_wrongSound, token);
@@ -23,14 +21,6 @@ namespace Quiz.SoundSystem
         public async UniTask PlayCorrectSoundAsync(CancellationToken token)
         {
             await PlaySoundAsync(_correctSound, token);
-        }
-
-        public async UniTask PlayBackgroundSoundAsync(CancellationToken token)
-        {
-            var backgroundSound = _backgroundSound;
-            backgroundSound.Play();
-
-            await UniTask.Delay(TimeSpan.FromSeconds(backgroundSound.clip.length), cancellationToken: token);
         }
 
         private async UniTask PlaySoundAsync(AudioSource audioSource, CancellationToken token)
