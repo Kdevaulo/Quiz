@@ -12,6 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ddc00993d07f314b8912152de499307, type: 3}
   m_Name: CardData
   m_EditorClassIdentifier: 
+  _cardColors:
+  - {r: 1, g: 0.3443396, b: 0.3443396, a: 1}
+  - {r: 1, g: 0.5987064, b: 0.34509802, a: 1}
+  - {r: 1, g: 0.84259135, b: 0.34509802, a: 1}
+  - {r: 0.8672432, g: 1, b: 0.34509802, a: 1}
+  - {r: 0.5473156, g: 1, b: 0.34509802, a: 1}
+  - {r: 0.34509802, g: 1, b: 0.8987892, a: 1}
+  - {r: 0.34509802, g: 0.8052098, b: 1, a: 1}
+  - {r: 0.49886674, g: 0.34509802, b: 1, a: 1}
+  - {r: 0.9707901, g: 0.34509802, b: 1, a: 1}
   _cardDataCollections:
   - _collectionName: Letters
     _cardDataCollection:
