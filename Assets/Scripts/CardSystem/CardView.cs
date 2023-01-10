@@ -1,17 +1,30 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-namespace Quiz.CardData
+namespace Quiz.CardSystem
 {
+    [AddComponentMenu(nameof(CardView) + " in " + nameof(CardSystem))]
     public class CardView : MonoBehaviour, IPointerClickHandler
     {
         public readonly UnityEvent<CardView> CardClicked = new UnityEvent<CardView>();
 
-        [SerializeField] private Image _childImage;
+        public SpriteRenderer CardRenderer => _cardRenderer;
+        public SpriteRenderer CellRenderer => _cellRenderer;
+
+        public Transform SpriteContainer => _spriteContainer;
+
+        public Transform CellContainer => _cellContainer;
+
+        public string CardID => _cardID;
+
+        [SerializeField] private SpriteRenderer _cardRenderer;
+
+        [SerializeField] private SpriteRenderer _cellRenderer;
 
         [SerializeField] private Transform _spriteContainer;
+
+        [SerializeField] private Transform _cellContainer;
 
         [SerializeField] private ParticleSystem _particleSystem;
 
@@ -40,21 +53,6 @@ namespace Quiz.CardData
         public void SetID(string targetName)
         {
             _cardID = targetName;
-        }
-
-        public string GetID()
-        {
-            return _cardID;
-        }
-
-        public Transform GetSpriteContainer()
-        {
-            return _spriteContainer;
-        }
-
-        public Image GetCardImage()
-        {
-            return _childImage;
         }
     }
 }

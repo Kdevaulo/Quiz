@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace Quiz.SoundSystem
 {
+    [AddComponentMenu(nameof(SoundPlayer) + " in " + nameof(SoundSystem))]
     public class SoundPlayer : MonoBehaviour
     {
         [SerializeField] private AudioSource _wrongSound;

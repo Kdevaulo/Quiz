@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-using Quiz.CardData;
+using Quiz.CardSystem;
 
 namespace Quiz.AnswersSystem
 {

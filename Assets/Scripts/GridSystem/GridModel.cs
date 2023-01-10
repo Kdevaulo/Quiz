@@ -1,18 +1,23 @@
+using System.Linq;
+
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace Quiz.GridSystem
 {
     [CreateAssetMenu(fileName = nameof(GridModel), menuName = nameof(GridModel) + " in " + nameof(GridSystem))]
     public class GridModel : ScriptableObject
     {
-        [field: SerializeField] public Color GridColor { get; private set; }
+        [SerializeField] private GridData[] _gridDataCollection;
 
-        [field: SerializeField] public Sprite GridSprite { get; private set; }
+        public GridData GetGridData(int pointsCount)
+        {
+            var gridData = _gridDataCollection.FirstOrDefault(x => x.PointsCount == pointsCount);
 
-        [field: SerializeField] public Vector2 Spacing { get; private set; }
+            Assert.IsNotNull(gridData, $"{nameof(GridModel)} {nameof(GetGridData)} " +
+                                       $"Can't find dataCollection with pointsCount == {pointsCount}");
 
-        [field: SerializeField] public Vector2 CellSize { get; private set; }
-
-        [field: SerializeField] public int ObjectWidthCount { get; private set; }
+            return gridData;
+        }
     }
 }

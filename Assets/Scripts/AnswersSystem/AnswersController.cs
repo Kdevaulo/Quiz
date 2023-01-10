@@ -1,11 +1,12 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
-using Quiz.CardData;
+using Quiz.CardSystem;
+using Quiz.Utils;
 
 using UnityEngine;
 using UnityEngine.Events;
-
-using Random = UnityEngine.Random;
 
 namespace Quiz.AnswersSystem
 {
@@ -13,19 +14,23 @@ namespace Quiz.AnswersSystem
     {
         public readonly UnityEvent<string> CorrectItemChosen = new UnityEvent<string>();
 
-        public readonly UnityEvent CorrectItemActivated = new UnityEvent();
-
         public readonly UnityEvent<CardView> OnCorrectAction = new UnityEvent<CardView>();
 
-        public readonly UnityEvent WrongItemActivated = new UnityEvent();
-
         public readonly UnityEvent<Transform> OnWrongAction = new UnityEvent<Transform>();
+
+        public readonly UnityEvent OnCorrectItemChoose = new UnityEvent();
+
+        public readonly UnityEvent CorrectItemActivated = new UnityEvent();
+
+        public readonly UnityEvent WrongItemActivated = new UnityEvent();
 
         private readonly AnswersModel _answersModel;
 
         private readonly UnityEvent _cardsCreated;
 
         private string _chosenID;
+
+        private List<string> _chosenItems = new List<string>();
 
         public AnswersController(AnswersModel answersModel, UnityEvent cardsCreated)
         {
@@ -42,7 +47,7 @@ namespace Quiz.AnswersSystem
 
         public void CheckAnswer(CardView view)
         {
-            if (_chosenID == view.GetID())
+            if (_chosenID == view.CardID)
             {
                 CorrectItemActivated.Invoke();
                 OnCorrectAction.Invoke(view);
@@ -50,7 +55,7 @@ namespace Quiz.AnswersSystem
             else
             {
                 WrongItemActivated.Invoke();
-                OnWrongAction.Invoke(view.GetSpriteContainer());
+                OnWrongAction.Invoke(view.SpriteContainer);
             }
         }
 
@@ -58,10 +63,25 @@ namespace Quiz.AnswersSystem
         {
             var items = _answersModel.GetUsedItems();
 
-            var chosenOne = items[Random.Range(0, items.Count)];
-            _chosenID = chosenOne.GetID();
+            items = items.Shuffle();
+
+            var unusedItem = items.FirstOrDefault(x => !_chosenItems.Contains(x.CardID));
+            // note: the unique correct answer in the playmode is not fully implemented
+
+            if (unusedItem == null)
+            {
+                _chosenItems.Clear();
+                unusedItem = items.First();
+            }
+
+            var id = unusedItem.CardID;
+
+            _chosenID = id;
+
+            _chosenItems.Add(id);
 
             CorrectItemChosen.Invoke(_chosenID);
+            OnCorrectItemChoose.Invoke();
         }
     }
 }

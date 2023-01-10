@@ -9,17 +9,15 @@ using Quiz.Utils;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Quiz.CardData
+namespace Quiz.CardSystem
 {
     public class CardBehaviourController : IDisposable
     {
-        public readonly UnityEvent CardBehaviourFinished = new UnityEvent();
+        public readonly UnityEvent CardEndBehaviourFinished = new UnityEvent();
 
         private readonly AnswersModel _answersModel;
 
-        private readonly UnityEvent _correctItemActivated;
-
-        private readonly UnityEvent _wrongItemActivated;
+        private readonly UnityEvent _onCorrectItemChoose;
 
         private readonly UnityEvent<CardView> _onCorrectAction;
 
@@ -31,25 +29,40 @@ namespace Quiz.CardData
 
         private readonly List<Transform> _movingTransforms = new List<Transform>();
 
-        public CardBehaviourController(AnswersModel answersModel, UnityEvent correctItemActivated,
-            UnityEvent wrongItemActivated,
+        private bool _isFirstStart = true;
+
+        public CardBehaviourController(AnswersModel answersModel, UnityEvent onCorrectItemChoose,
             UnityEvent<CardView> onCorrectAction,
             UnityEvent<Transform> onWrongAction)
         {
             _answersModel = answersModel;
-            _correctItemActivated = correctItemActivated;
-            _wrongItemActivated = wrongItemActivated;
+            _onCorrectItemChoose = onCorrectItemChoose;
             _onCorrectAction = onCorrectAction;
             _onWrongAction = onWrongAction;
 
+            onCorrectItemChoose.AddListener(HandleFirstStart);
             onCorrectAction.AddListener(HandleCorrectAction);
             onWrongAction.AddListener(TryMoveWrongItem);
         }
 
         void IDisposable.Dispose()
         {
+            _onCorrectItemChoose.RemoveListener(HandleFirstStart);
             _onCorrectAction.RemoveListener(HandleCorrectAction);
             _onWrongAction.RemoveListener(TryMoveWrongItem);
+        }
+
+        private void HandleFirstStart()
+        {
+            // note: it would be better to add visualization customization options in the level,
+            // but for quick development I decided to hardcode it
+            if (!_isFirstStart)
+            {
+                return;
+            }
+
+            DoCardAppearanceAsync().Forget();
+            _isFirstStart = false;
         }
 
         private void TryMoveWrongItem(Transform targetTransform)
@@ -64,18 +77,34 @@ namespace Quiz.CardData
 
         private void HandleCorrectAction(CardView cardView)
         {
-            DisableCards(_answersModel.GetUsedItems());
+            SetCardsClickValue(_answersModel.GetUsedItems(), false);
 
-            ScaleCorrectItemAsync(cardView.GetSpriteContainer()).Forget();
+            ScaleCorrectItemAsync(cardView.SpriteContainer).Forget();
 
             cardView.PlayParticles();
         }
 
-        private void DisableCards(List<CardView> cards)
+        private async UniTask DoCardAppearanceAsync()
         {
-            foreach (var item in cards)
+            var usedItems = _answersModel.GetUsedItems();
+
+            SetCardsClickValue(usedItems, false);
+            await AppearCardsAsync();
+            SetCardsClickValue(usedItems, true);
+        }
+
+        private async UniTask AppearCardsAsync()
+        {
+            var cardViews = _answersModel.GetUsedItems();
+
+            foreach (var item in cardViews)
             {
-                item.SetCanClick(false);
+                _transformScaler.SetZeroScale(item.CellContainer);
+            }
+
+            foreach (var item in cardViews)
+            {
+                await _transformScaler.AppearBounceAsync(item.CellContainer);
             }
         }
 
@@ -90,7 +119,15 @@ namespace Quiz.CardData
         {
             await _transformScaler.DisappearBounceAsync(targetTransform);
 
-            CardBehaviourFinished.Invoke();
+            CardEndBehaviourFinished.Invoke();
+        }
+
+        private void SetCardsClickValue(List<CardView> cards, bool value)
+        {
+            foreach (var item in cards)
+            {
+                item.SetCanClick(value);
+            }
         }
     }
 }

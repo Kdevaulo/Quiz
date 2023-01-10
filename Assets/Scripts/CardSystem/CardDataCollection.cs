@@ -2,7 +2,7 @@ using System;
 
 using UnityEngine;
 
-namespace Quiz.CardData
+namespace Quiz.CardSystem
 {
     [Serializable]
     public class CardDataCollection

@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 
 using Quiz.AnswersSystem;
-using Quiz.CardData;
+using Quiz.CardSystem;
 using Quiz.UserEventHandleSystem;
+using Quiz.Utils;
 
 using UnityEngine;
 using UnityEngine.Events;
@@ -22,6 +23,8 @@ namespace Quiz.Factories
 
         private readonly AnswersModel _answersModel;
 
+        private readonly ColorSetter _colorSetter;
+
         private UserEventHandler _userEventHandler;
 
         public CardCreator(GameObject cardPrefab, CardDataModel dataModel, AnswersModel answersModel)
@@ -29,6 +32,7 @@ namespace Quiz.Factories
             _cardPrefab = cardPrefab;
             _dataModel = dataModel;
             _answersModel = answersModel;
+            _colorSetter = new ColorSetter(dataModel.CardColors);
         }
 
         public void SetEventHandler(UserEventHandler userEventHandler)
@@ -41,14 +45,14 @@ namespace Quiz.Factories
             _dataModel.ChooseRandomDataCollection();
         }
 
-        public void CreateCards(int cardsCount, Transform parent)
+        public void CreateCards(int cardsCount, Transform parent, Vector2[] positions)
         {
-            var usedData = new List<CardData.CardData>();
+            var usedData = new List<CardData>();
             var createdCards = new List<CardView>();
 
             for (int i = 0; i < cardsCount; i++)
             {
-                CardData.CardData selectedData;
+                CardData selectedData;
 
                 var stuckCounter = 0;
 
@@ -70,15 +74,16 @@ namespace Quiz.Factories
 
                 var cardTransform = card.transform;
                 cardTransform.SetParent(parent);
+                cardTransform.position = positions[i];
 
                 var cardView = card.GetComponent<CardView>();
                 cardView.SetID(id);
 
-                var image = cardView.GetCardImage();
-                image.sprite = selectedData.GetSprite();
-                image.SetNativeSize();
+                var renderer = cardView.CardRenderer;
+                renderer.sprite = selectedData.GetSprite();
+                _colorSetter.SetUniqueColor(cardView.CellRenderer);
 
-                image.gameObject.transform.rotation = Quaternion.Euler(selectedData.GetRotation());
+                renderer.gameObject.transform.rotation = Quaternion.Euler(selectedData.GetRotation());
 
                 _userEventHandler.SubscribeEvents(cardView);
 

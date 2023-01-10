@@ -1,7 +1,7 @@
 using System;
 
 using Quiz.AnswersSystem;
-using Quiz.CardData;
+using Quiz.CardSystem;
 using Quiz.Factories;
 using Quiz.GridSystem;
 using Quiz.LevelSystem;
@@ -9,26 +9,23 @@ using Quiz.RestartSystem;
 using Quiz.SoundSystem;
 using Quiz.TitleSystem;
 using Quiz.UserEventHandleSystem;
-using Quiz.Utils;
 
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Quiz
 {
+    [AddComponentMenu(nameof(Startup) + " in " + nameof(Quiz))]
     public class Startup : MonoBehaviour, IDisposable
     {
-        [SerializeField] private Transform _gridParent;
-
-        [SerializeField] private Image _blackoutImage;
-
         [SerializeField] private GameObject _cardPrefab;
 
         [SerializeField] private SoundPlayer _soundPlayer;
 
+        [SerializeField] private GridView _gridView;
+
         [SerializeField] private TitleView _titleView;
 
-        [SerializeField] private RestartView restartView;
+        [SerializeField] private RestartView _restartView;
 
         [SerializeField] private CardDataModel _cardModel;
 
@@ -56,8 +53,6 @@ namespace Quiz
 
         private UserEventHandler _userEventHandler;
 
-        private ColorFader<Image> _blackoutColorFader;
-
         private void Awake()
         {
             _levelController = new LevelController(_levelDataModel);
@@ -66,18 +61,17 @@ namespace Quiz
             _answersController = new AnswersController(_answersModel, _cardCreator.CardsCreated);
             _userEventHandler = new UserEventHandler(_answersController);
             _titleController = new TitleController(_titleView, _answersController.CorrectItemChosen);
-            _gridController = new GridController(_cardCreator, _gridParent, _gridModel, _levelController.LevelStarted);
+            _gridController = new GridController(_cardCreator, _gridView, _gridModel, _levelController.LevelStarted);
             _soundController = new SoundController(_soundPlayer, _answersController.CorrectItemActivated,
                 _answersController.WrongItemActivated);
-            _restartController = new RestartController(restartView, _levelController, _levelController.GameFinished);
+            _restartController = new RestartController(_restartView, _levelController, _levelController.GameFinished);
 
             _cardBehaviourController = new CardBehaviourController(_answersModel,
-                _answersController.CorrectItemActivated,
-                _answersController.WrongItemActivated, _answersController.OnCorrectAction,
+                _answersController.OnCorrectItemChoose, _answersController.OnCorrectAction,
                 _answersController.OnWrongAction);
 
             _cardCreator.SetEventHandler(_userEventHandler);
-            _cardBehaviourController.CardBehaviourFinished.AddListener(_levelController.StartNextLevel);
+            _cardBehaviourController.CardEndBehaviourFinished.AddListener(_levelController.StartNextLevel);
         }
 
         private void Start()
@@ -88,7 +82,7 @@ namespace Quiz
 
         void IDisposable.Dispose()
         {
-            _cardBehaviourController.CardBehaviourFinished.RemoveListener(_levelController.StartNextLevel);
+            _cardBehaviourController.CardEndBehaviourFinished.RemoveListener(_levelController.StartNextLevel);
         }
     }
 }

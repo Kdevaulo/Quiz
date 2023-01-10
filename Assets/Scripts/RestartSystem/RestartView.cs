@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 namespace Quiz.RestartSystem
 {
+    [AddComponentMenu(nameof(RestartView) + " in " + nameof(RestartSystem))]
     public class RestartView : MonoBehaviour
     {
         public readonly UnityEvent RestartButtonClicked = new UnityEvent();
